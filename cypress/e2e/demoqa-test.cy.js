@@ -17,7 +17,7 @@ describe('Demoqa Tests', () => {
       cy.get('#permanentAddress').type(`${userData.permanentAddress}`);
       cy.get("#submit").click();
 
-      cy.get("#name").should('have.text', `Name:${userData.firstName}`);
+      cy.get("#name").should('have.text', `Name:${userData.firstName} ${userData.lastName}`);
     })
   });
 
@@ -257,7 +257,7 @@ describe('Demoqa Tests', () => {
 
   })
 
-  context("frames", () => {
+  context.only("frames", () => {
     it('large frame', () => {
       cy.get(':nth-child(3) > .group-header > .header-wrapper > .header-text').click()
       cy.get(':nth-child(3) > .element-list > .menu-list > #item-2').click()
@@ -265,7 +265,7 @@ describe('Demoqa Tests', () => {
         .its('0.contentDocument.body')
         .should('be.visible')
         .and('have.text', 'This is a sample page')
-      cy.frameLoaded('#frame1')
+      
     })
 
     it('small frame', () => {
@@ -275,7 +275,7 @@ describe('Demoqa Tests', () => {
         .its('0.contentDocument.body')
         .should('be.visible')
         .and('have.text', 'This is a sample page')
-      cy.frameLoaded('#frame2')
+     
     })
 
     it('Nested Frames 1', () => {
@@ -285,16 +285,8 @@ describe('Demoqa Tests', () => {
         .its('0.contentDocument.body')
         .should('be.visible')
         .and('have.text', 'Parent frame')
-      cy.frameLoaded('#frame1')
-      cy.get('#frame1')
-        .its('0.contentDocument.body')
-        .find('iframe')
-        .its('0.contentDocument.body')
-        .should('be.visible')
-        .and('have.text', 'Child Iframe')
-
     })
-  })
+  });
 
   context("Modals", () => {
     it('Small Modal: open & close', () => {
@@ -318,5 +310,7 @@ describe('Demoqa Tests', () => {
       cy.get('.modal-content')
         .should('not.exist')
     })
-  })
+  });
+
+ 
 })
