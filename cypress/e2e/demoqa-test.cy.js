@@ -265,17 +265,17 @@ describe('Demoqa Tests', () => {
         .its('0.contentDocument.body')
         .should('be.visible')
         .and('have.text', 'This is a sample page')
-      
+
     })
 
-    it.only('small frame', () => {
+    it('small frame', () => {
       cy.get(':nth-child(3) > .group-header > .header-wrapper > .header-text').click()
       cy.get(':nth-child(3) > .element-list > .menu-list > #item-2').click()
       cy.get('#frame2')
         .its('0.contentDocument.body')
         .should('be.visible')
-        // .and('have.text', 'This is a sample page')
-     
+      // .and('have.text', 'This is a sample page')
+
     })
 
     it('Nested Frames 1', () => {
@@ -312,5 +312,5 @@ describe('Demoqa Tests', () => {
     })
   });
 
- 
+
 })
