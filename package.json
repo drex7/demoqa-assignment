@@ -6,6 +6,7 @@
   "scripts": {
     "cy:open": "npx cypress open --browser electron",
     "cy:run": "cypress run --headeless --browser electron",
+    "start": "npm install && npm run cy:run",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
